@@ -1,6 +1,6 @@
 #include <raylib.h>
 
-struct Ball {
+typedef struct Ball {
     int id;
     int cx;
     int cy;
@@ -8,3 +8,5 @@ struct Ball {
     Vector2 velocity;
     Color color;
 };
+
+void DrawBall(struct Ball ball);
