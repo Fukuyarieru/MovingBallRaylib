@@ -9,5 +9,6 @@ typedef struct Ball {
     Color color;
 };
 
+struct Ball MoveBall(struct Ball ball);
 void DrawBall(struct Ball ball);
 struct Ball spawnBall(Color color, int radius);

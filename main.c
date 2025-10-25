@@ -7,6 +7,8 @@
 int screenWidth=1920;
 int screenHeight=1080;
 
+const int ballMovingSpeed=10;
+
 // int id=0;
 
 // const struct Ball balls[BALLS_AMOUNT];
@@ -17,11 +19,18 @@ int main() {
 
     // for(int i=0;i<BALLS_AMOUNT;i++) {
     //     spawnBall(BLACK,3);
-    // }
+
+    struct Ball ball= spawnBall(BLACK, 100);
 
     while(!WindowShouldClose()) {
 
         BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        ball=MoveBall(ball);
+
+        DrawBall(ball);
 
         screenWidth=GetScreenWidth();
         screenHeight=GetScreenHeight();
@@ -36,6 +45,26 @@ int main() {
 
 void DrawBall(struct Ball ball) {
     DrawCircle(ball.cx, ball.cy, ball.radius, ball.color);
+}
+
+struct Ball MoveBall(struct Ball ball) {
+
+    if(GetKeyPressed()==KEY_A) {
+        ball.cx-=ballMovingSpeed;
+    }
+    if(GetKeyPressed()==KEY_D) {
+        ball.cx+=ballMovingSpeed;
+    }
+    if(GetKeyPressed()==KEY_W) {
+        ball.cy+=ballMovingSpeed;
+    }
+    if(GetKeyPressed()==KEY_S) {
+        ball.cy-=ballMovingSpeed;
+    }
+
+    printf("cx: %d, cy: %d \n", ball.cx, ball.cy);
+
+    return ball;
 }
 
 struct Ball spawnBall(Color color, int radius) {
