@@ -10,3 +10,4 @@ typedef struct Ball {
 };
 
 void DrawBall(struct Ball ball);
+struct Ball spawnBall(Color color, int radius);
